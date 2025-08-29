@@ -1,0 +1,312 @@
+:root {
+  background-color: #000;
+  --color-text: #fff;
+  --color-primary: #8b5cf6;
+  --color-danger: #ef4444;
+  --color-success: #22c55e;
+}
+
+.Screen {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #000;
+}
+
+.Background {
+  position: fixed;
+  background: radial-gradient(
+    71.43% 62.3% at 46.43% 36.43%,
+    rgba(18, 229, 229, 0) 15%,
+    rgba(239, 155, 255, 0.3) 56.35%,
+    #ff6448 100%
+  );
+  box-shadow: 0px 12.93px 28.74px 0px #ffd28db2 inset;
+  border-radius: 50%;
+  width: 200vw;
+  height: 200vw;
+  top: -60vw;
+  left: -14.27vw;
+  transform: rotate(15.25deg);
+}
+
+.App {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  padding-bottom: 100px; /* Space for navigation */
+}
+
+/* Header Section */
+.header-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+  z-index: 1;
+}
+
+.welcome-text {
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.detection-text {
+  color: #ccc;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.new-image-btn {
+  background: var(--color-primary);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.new-image-btn:active {
+  opacity: 0.8;
+}
+
+.thunderbolt-icon {
+  margin-bottom: 20px;
+}
+
+.thunderbolt-symbol {
+  color: #fff;
+  font-size: 48px;
+}
+
+/* Dashboard */
+.dashboard {
+  background: rgba(40, 40, 40, 0.8);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  z-index: 1;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.recent-results-text {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.danger-level-text {
+  color: #ccc;
+  font-size: 16px;
+}
+
+.dashboard-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.view-image-btn {
+  background: var(--color-primary);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 16px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  align-self: flex-start;
+  cursor: pointer;
+}
+
+.view-image-btn:active {
+  opacity: 0.8;
+}
+
+/* Circular Progress */
+.circular-progress {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.progress-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transform: rotate(-90deg); /* Start from top */
+}
+
+.progress-circle--placeholder {
+  border: 8px solid #333;
+  background: transparent;
+}
+
+.progress-circle--active {
+  border: 8px solid transparent;
+  transition: background 0.5s ease-in-out;
+}
+
+.progress-inner {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: rgba(40, 40, 40, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(90deg); /* Counter-rotate the text */
+}
+
+.progress-text {
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.image-contains-text {
+  color: #ccc;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 20px;
+  max-width: 250px;
+}
+
+/* Bar Chart */
+.bar-chart {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  width: 100%;
+  height: 120px;
+  gap: 20px;
+}
+
+.bar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.bar-container {
+  height: 100px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.bar-fill {
+  background: var(--color-danger);
+  width: 40px;
+  border-radius: 4px 4px 0 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 4px;
+  min-height: 20px;
+  transition: height 0.3s ease;
+}
+
+.bar-count {
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.bar-placeholder {
+  color: #666;
+  font-size: 24px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bar-label {
+  color: #ccc;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* Navigation Bar */
+.navigation-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(139, 92, 246, 0.8) 0%,
+    rgba(168, 85, 247, 0.6) 50%,
+    rgba(59, 130, 246, 0.4) 100%
+  );
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 10;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.nav-item:active {
+  opacity: 0.7;
+}
+
+.nav-icon {
+  width: 32px;
+  height: 32px;
+  filter: brightness(0) invert(1); /* Makes icons white */
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .App {
+    padding: 16px;
+    padding-bottom: 100px;
+  }
+  
+  .dashboard {
+    padding: 16px;
+  }
+  
+  .welcome-text {
+    font-size: 20px;
+  }
+  
+  .bar-chart {
+    gap: 12px;
+  }
+  
+  .bar-fill {
+    width: 32px;
+  }
+}
