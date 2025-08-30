@@ -1,1 +1,162 @@
-# Techjam25
+# Tiktok TechJam 25 - Thunderbolt 
+**Privacy Meets AI: Building a Safer Digital Future**
+AI-powered visual privacy protection — detect, tag, and mask sensitive information from your images before they leak.
+
+---
+
+## Problem Statement
+As AI integrates deeper into our daily lives, **privacy risks** grow more pressing.  
+From hidden location cues in photos to unauthorized data leaks, users face challenges in controlling how their data is exposed.
+
+**Thunderbolt** addresses this problem by combining **Generative AI** with **privacy-first design**:
+
+- **Privacy of AI** → Ensuring user data isn’t leaked when interacting with AI systems.
+- **AI for Privacy** → Using AI to **defend user privacy** by automatically detecting, masking, and visualizing potential risks.
+
+---
+
+## Features
+### Risk Detection Dashboard
+- Upload an image and **instantly analyze potential privacy risks**.
+- Detect identifying cues like:
+  - Faces
+  - Road signs
+  - Building structures
+  - License plates
+  - Location-sensitive elements
+
+### Dynamic Danger Level Gauge
+- AI-powered scoring system highlights the **risk level** of each uploaded image.
+- Color-coded gauge:
+  - 🟢 **Low Risk**
+  - 🟡 **Medium Risk**
+  - 🔴 **High Risk**
+
+### Automated Privacy Protection
+- Blur or mask sensitive regions in images (e.g., plates, street signs).
+- Designed to prevent **geo-location inference** and **identity exposure**.
+
+### Interactive Visualizations
+- **Circular gauge**: Displays the **danger percentage** intuitively.
+- **Bar chart**: Highlights the **count of detected sensitive features**.
+
+---
+
+## System Architecture
+
+```mermaid
+graph TD
+  A[User Uploads Image] --> B[On-device Processing]
+  B --> C[AI-powered Detection]
+  C --> D[Privacy Risk Scoring]
+  C --> E[Feature Tagging]
+  D --> F[Danger Level Gauge]
+  E --> G[Bar Charts + Insights]
+  F --> H[Masked Image Output]
+```
+
+- **Frontend:** React (Lynx mini-app framework)
+- **AI Engine:** Integrates **generative AI** models for detection and inference
+- **Privacy Layer:** Image processing techniques to blur/mask sensitive regions
+
+---
+
+## Tech Stack
+
+### **Frameworks & Libraries**
+- **React (Lynx)** — UI development
+- **TypeScript** — Strong typing for safer, cleaner code
+- **CSS Modules** — Encapsulated styling for components
+- **Generative AI APIs** — Model inference and location-based sensitivity scoring
+
+### **Development Tools**
+- **Visual Studio Code (VSCode)** — for project development, debugging, and code management.
+- **Lynx Mini-App Framework** — frontend framework for seamless mobile-native UI development.
+- **Node.js & npm** — used for dependency management and running the development server.
+- **Git & GitHub** — version control and collaborative development.
+- **Jupyter / Colab** — quick experimentation for AI detection models.
+
+### **Key Components**
+
+| File               | Description                                               |
+|--------------------|-------------------------------------------------------|
+| `Thunderbolt.tsx`  | Main dashboard & detection logic                      |
+| `HomeGpt.tsx`      | Welcome page with result visualization               |
+| `Query.tsx`        | Handles uploads, previews, circular gauges, bar charts |
+| `App.tsx`          | Entry point for Lynx mini-app                         |
+| `Router.tsx`       | Manages page routing within the app                  |
+
+---
+
+## 🔗 APIs & Assets Used
+
+### **AI Models**
+- Open-source detection models: **YOLOv8** / **CLIP-based analysis**
+- Generative AI: **OpenAI** for location-risk predictions
+
+### **Assets**
+- Custom icons:
+  - `homeIcon.png`
+  - `boltIcon.png`
+- Brand-specific UI elements
+
+---
+
+## How It Works
+
+### **Step 1 — Upload**
+Users upload an image from their device.
+
+### **Step 2 — Analyze**
+AI processes the image to **detect privacy-sensitive visual cues**.
+
+### **Step 3 — Score**
+A **danger score** is generated based on detected features.
+
+### **Step 4 — Mask**
+Sensitive regions are automatically **blurred or masked** to protect user privacy.
+
+---
+
+## Future Enhancements
+
+### **1. On-device AI**
+- Process images entirely on-device for **maximum privacy**.
+
+### **2. Generative Adversarial Masking**
+- Use AI to create **context-preserving blurs** for masked areas.
+
+### **3. Social Media Integration**
+- Pre-scan images before sharing to ensure **no sensitive data leaks**.
+
+---
+
+## Installation
+
+### **Clone the repository**
+```bash
+git clone https://github.com/<your-org>/thunderbolt
+```
+
+### **Navigate into the project**
+```bash
+cd thunderbolt
+```
+
+### **Install dependencies**
+```bash
+npm install
+```
+
+### **Start development server**
+```bash
+npm start
+```
+
+---
+
+## 📜 License
+This project is released under the **MIT License**.  
+See [LICENSE](./LICENSE) for details.
+
+---
