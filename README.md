@@ -43,7 +43,7 @@ From hidden location cues in photos to unauthorized data leaks, users face chall
   - 🔴 **High Risk**
 
   ![DetectFlag](./Thunderbolt/pictures/DetectFlag.png)
-![DetectCarPlate](./Thunderbolt/pictures/DetectCarPlate.png)
+![DetectCarPlate](./Thunderbolt/pictures/DetectCarPlates.png)
 
 
 ### Automated Privacy Protection
@@ -107,6 +107,7 @@ graph TD
 ### **AI Models**
 - Open-source detection models: **YOLOv8** / **CLIP-based analysis**
 - Generative AI: **OpenAI** for location-risk predictions
+- **Roboflow OCR API**: for text extraction from images to detect location-revealing information
 
 ### **Assets**
 - Custom icons:
@@ -123,7 +124,7 @@ graph TD
 - Metadata such as EXIF location tags is **automatically stripped** to prevent accidental leaks.
 
 ### **Step 2 — Analyze with AI-Powered Privacy Risk Detection**
-- Thunderbolt uses **computer vision models** (e.g. YOLOv8 + CLIP) to scan for sensitive features like:
+- Thunderbolt uses **Roboflow OCR API** to extract visible text and other sensitive from uploaded images. This helps flag sensitive location-revealing information such as:
   - Faces
   - Vehicle plates
   - Landmarks & building patterns
