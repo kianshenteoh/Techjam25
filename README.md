@@ -1,5 +1,6 @@
 # Tiktok TechJam 25 - Thunderbolt 
 **Privacy Meets AI: Building a Safer Digital Future**
+
 AI-powered visual privacy protection — detect, tag, and mask sensitive information from your images before they leak.
 
 ---
@@ -113,17 +114,30 @@ graph TD
 
 ## How It Works
 
-### **Step 1 — Upload**
-Users upload an image from their device.
+### **Step 1 — Upload & Local Preprocessing**
+- Images are uploaded from the user’s device.
+- Metadata such as EXIF location tags is **automatically stripped** to prevent accidental leaks.
 
-### **Step 2 — Analyze**
-AI processes the image to **detect privacy-sensitive visual cues**.
+### **Step 2 — Analyze with AI-Powered Privacy Risk Detection**
+- Thunderbolt uses **computer vision models** (e.g. YOLOv8 + CLIP) to scan for sensitive features like:
+  - Faces
+  - Vehicle plates
+  - Landmarks & building patterns
+  - Road signs or street names
 
-### **Step 3 — Score**
-A **danger score** is generated based on detected features.
+### **Step 3 — Privacy Risk Scoring**
+- The system quantifies **privacy exposure** using:
+  - **Danger-level scoring** (0–100%)
+  - Context-aware risk thresholds based on detected features.
 
-### **Step 4 — Mask**
-Sensitive regions are automatically **blurred or masked** to protect user privacy.
+### **Step 4 — Automated Privacy Protection**
+- High-risk areas are **blurred, masked, or noise-injected** dynamically.
+- Output images are optimized for **safe sharing** online.
+
+### **Step 5 — Explainable Insights**
+- Thunderbolt provides **visual analytics**:
+  - A **circular danger gauge** for risk at a glance.
+  - A **bar chart** showing how many sensitive features were detected.
 
 ---
 
@@ -137,6 +151,9 @@ Sensitive regions are automatically **blurred or masked** to protect user privac
 
 ### **3. Social Media Integration**
 - Pre-scan images before sharing to ensure **no sensitive data leaks**.
+
+### **4. Real-Time Video Privacy**  
+- Extend detection and masking to live video streams.
 
 ---
 
