@@ -42,6 +42,10 @@ From hidden location cues in photos to unauthorized data leaks, users face chall
   - 🟡 **Medium Risk**
   - 🔴 **High Risk**
 
+  ![DetectFlag](./Thunderbolt/assets/DetectFlag.png)
+![DetectCarPlate](./Thunderbolt/assets/DetectCarPlate.png)
+
+
 ### Automated Privacy Protection
 - Blur or mask sensitive regions in images (e.g., plates, street signs).
 - Designed to prevent **geo-location inference** and **identity exposure**.
