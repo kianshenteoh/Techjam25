@@ -1,0 +1,235 @@
+:root {
+  --page-bg: #000;
+  --text: #fff;
+  --muted: #b6b6b6;
+  --brand: #5a1176;         /* purple button */
+  --brand-press: #4a0e61;
+  --card: #252525;          /* dashboard bg */
+  --chip: #3a3a3a;
+  --bar: #c01414;           /* red bars */
+  --ring-gray: #3f3f3f;
+}
+
+* { box-sizing: border-box; }
+
+.Screen {
+  min-height: 100vh;
+  background: var(--page-bg);
+  color: var(--text);
+}
+
+.AppPad {
+  padding: 64px 20px 112px; /* bottom space for nav */
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* Top section */
+.Welcome {
+  display: block;
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 8px;
+  color: #fff;
+}
+
+.Subtitle {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+  margin: 14px 0 12px;
+}
+
+/* Buttons */
+.PrimaryBtn {
+  display: inline-block;
+  background: var(--brand);
+  border-radius: 18px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1;
+  color: #fff;
+}
+.PrimaryBtn:active { background: var(--brand-press); }
+
+.SecondaryBtn {
+  display: inline-block;
+  background: var(--brand);
+  border-radius: 18px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  color: #fff;
+}
+
+/* Small bolt icon under the button */
+.TopBolt {
+  width: 36px;         /* was 22px */
+  height: 36px;        /* NEW: ensure it renders */
+  display: block;      /* NEW: keep it on its own line */
+  margin: 14px 0 8px;
+}
+
+/* Card / dashboard */
+.Card {
+  background: var(--card);
+  border-radius: 18px;
+  padding: 16px;
+  margin-top: 12px;
+}
+
+.CardRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.CardRow.gap { margin-top: 10px; }
+
+.CardTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b6b6b;
+}
+
+.Muted { color: var(--muted); font-size: 14px; }
+
+/* Gauge (conic-gradient ring) — no masks or inset */
+.Gauge {
+  --p: 0;                      /* 0..100 */
+  position: relative;
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The ring layer */
+.Gauge::before {
+  content: "";
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  border-radius: 50%;
+  background:
+    conic-gradient(
+      from 270deg,
+      #d71f1f 0deg,
+      #e54a1f calc(var(--p) * 3.6deg / 3),
+      #ed9d1f calc(var(--p) * 3.6deg * 0.66),
+      #2ca737 calc(var(--p) * 3.6deg),
+      transparent 0
+    );
+  background-color: #1f1f1f; /* base ring where gradient is transparent */
+}
+
+/* Inner disc (hole cover) */
+.Gauge::after {
+  content: "";
+  position: absolute;
+  top: 10px; right: 10px; bottom: 10px; left: 10px;
+  border-radius: 50%;
+  background: #121212;
+}
+
+.Gauge--placeholder::before {
+  background: var(--ring-gray);
+}
+
+.GaugeValue {
+  position: relative;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+}
+
+
+/* “Your image contains …” line */
+.Explain {
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+  margin-top: 12px;
+}
+.ExplainHead { font-size: 14px; font-weight: 600; color: #fff;}
+.ExplainTail { font-size: 14px; }
+
+/* Bars */
+.Bars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 12px;
+  padding-top: 2px;
+}
+.Bars--empty {
+  position: relative;
+  min-height: 92px;
+  border-top: 2px dashed #6b6b6b;
+}
+
+/* Each column */
+.BarCol {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+}
+
+.Bar {
+  --h: 0; /* 0..8 units -> 0..100% */
+  width: 22px;
+  height: calc((var(--h) / 8) * 100%);
+  min-height: 6px;
+  max-height: 100px;
+  background: var(--bar);
+  border-radius: 6px;
+  align-self: end;
+  justify-self: center;
+}
+
+.BarValue { font-size: 13px; font-weight: 600; }
+.BarLabel { font-size: 12px; color: var(--muted); }
+
+/* Optional preview (hidden height; present to keep your pick flow alive) */
+.Preview { display:none; }
+.Preview--placeholder { filter: grayscale(50%); }
+
+/* Bottom navigation */
+.Nav {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  height: 92px;
+  overflow: visible;
+}
+
+/* REVISED gradient */
+.NavGrad {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background:
+    radial-gradient(165% 145% at 50% 0%,
+      rgba(164, 76, 219, 0.98) 0%,
+      rgba(131, 56, 205, 0.92) 38%,
+      rgba(92,   0, 153, 0.86) 60%,
+      rgba(26,   0,  42, 0.95) 84%,
+      rgba(0,    0,   0, 1.00) 100%);
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+  box-shadow: 0 -8px 26px rgba(0,0,0,0.6) inset;
+}
+
+.NavInner {
+  position: relative;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+}
+.NavItem { width: 64px; height: 64px; display: grid; align-items: center; }
+/*.NavItem--active { box-shadow: 0 0 6px rgba(255,255,255,0.35); }*/
+.NavIcon { width: 36px; height: 36px; }
+ 

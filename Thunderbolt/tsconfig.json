@@ -1,18 +1,10 @@
 {
-  "compilerOptions": {
-    "jsx": "react-jsx",
-    "jsxImportSource": "@lynx-js/react",
-
-    "module": "node18",
-    "moduleResolution": "node16",
-
-    "strict": true,
-    "isolatedModules": true,
-    "verbatimModuleSyntax": true,
-    "allowImportingTsExtensions": true,
-
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-  },
-  "exclude": ["dist/"],
+  "compilerOptions": {},
+  "extends": "expo/tsconfig.base",
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts"
+  ]
 }
