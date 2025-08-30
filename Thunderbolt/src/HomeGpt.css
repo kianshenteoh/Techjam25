@@ -19,7 +19,7 @@
 }
 
 .AppPad {
-  padding: 24px 20px 112px; /* bottom space for nav */
+  padding: 64px 20px 112px; /* bottom space for nav */
   max-width: 480px;
   margin: 0 auto;
 }
@@ -30,6 +30,7 @@
   font-size: 22px;
   font-weight: 700;
   margin-top: 8px;
+  color: #fff;
 }
 
 .Subtitle {
@@ -66,7 +67,9 @@
 
 /* Small bolt icon under the button */
 .TopBolt {
-  width: 22px;
+  width: 36px;         /* was 22px */
+  height: 36px;        /* NEW: ensure it renders */
+  display: block;      /* NEW: keep it on its own line */
   margin: 14px 0 8px;
 }
 
@@ -228,5 +231,5 @@
 }
 .NavItem { width: 64px; height: 64px; display: grid; align-items: center; }
 /*.NavItem--active { box-shadow: 0 0 6px rgba(255,255,255,0.35); }*/
-.NavIcon { width: 28px; height: 28px; }
+.NavIcon { width: 36px; height: 36px; }
  

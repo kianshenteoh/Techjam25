@@ -1,6 +1,5 @@
 import { useState } from '@lynx-js/react';
 import { getMiniApi, pickImageOnce } from './platform.ts';
-import lynxLogo from './assets/lynx-logo.png';
 
 import homeIcon from './assets/icon-home.png';
 import boltIcon from './assets/icon-bolt.png';
@@ -32,7 +31,7 @@ export function HomeGpt({ initialResults }: { initialResults?: Results }) {
     }
   };
 
-  const displaySrc = imgSrc ?? lynxLogo;
+  const displaySrc = imgSrc ?? boltIcon;
   const percent = results?.dangerPercent ?? -1;
 
   // Build up to three bars (matches the mock), extra entries will wrap nicely.
@@ -47,7 +46,6 @@ export function HomeGpt({ initialResults }: { initialResults?: Results }) {
         {/* Top: welcome + subtitle */}
         <text className="Welcome">Welcome to Thunderbolt</text>
         <text className="Subtitle">Detection risk with Thunderbolt AI</text>
-        <image className="TopBolt" src={boltIcon} />
 
         {/* New image button */}
         <text className="PrimaryBtn" bindtap={handlePick}>New image</text>
@@ -98,14 +96,6 @@ export function HomeGpt({ initialResults }: { initialResults?: Results }) {
           </view>
         </view>
 
-        {/* (Optional) preview strip for the selected image */}
-        <image
-          className={`Preview ${imgSrc ? '' : 'Preview--placeholder'}`}
-          src={displaySrc}
-          style={{ width: '88vw', maxWidth: '360px', height: '0px' }}
-          binderror={() => console.warn('image failed to load:', displaySrc)}
-          bindload={() => console.log('image loaded:', displaySrc)}
-        />
 
         {/* Bottom nav */}
         <view className="Nav">
@@ -123,3 +113,13 @@ export function HomeGpt({ initialResults }: { initialResults?: Results }) {
     </view>
   );
 }
+
+/*
+        <image
+          className={`Preview ${imgSrc ? '' : 'Preview--placeholder'}`}
+          src={displaySrc}
+          style={{ width: '88vw', maxWidth: '360px', height: '0px' }}
+          binderror={() => console.warn('image failed to load:', displaySrc)}
+          bindload={() => console.log('image loaded:', displaySrc)}
+        />
+*/
