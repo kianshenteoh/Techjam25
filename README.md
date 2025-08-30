@@ -10,8 +10,17 @@ From hidden location cues in photos to unauthorized data leaks, users face chall
 
 **Thunderbolt** addresses this problem by combining **Generative AI** with **privacy-first design**:
 
-- **Privacy of AI** → Ensuring user data isn’t leaked when interacting with AI systems.
-- **AI for Privacy** → Using AI to **defend user privacy** by automatically detecting, masking, and visualizing potential risks.
+### **1. Making AI Systems Resilient Against Attacks & Misuse**
+- **Local On-Device Processing** — processes images locally whenever possible, reducing reliance on cloud inference and minimizing security risks.
+- **No Data Retention** — images are not stored after detection, preventing re-identification or unauthorized reuse.
+- **Robust Detection Pipeline** — multi-layered detection flags potentially malicious or privacy-invasive inputs early.
+- **Privacy-Preserving Defaults** — sensitive feature detection and masking are always enabled by default.
+
+### **2. Using AI to Protect Users' Privacy**
+- **Sensitive Feature Detection** — identifies faces, license plates, signs, and other geo-inferable elements automatically.
+- **Danger-Level Scoring** — quantifies image sensitivity with a percentage-based privacy risk score.
+- **Automatic Privacy Protections** — blurs or masks sensitive areas to prevent location leakage and identity exposure.
+- **Explainable Insights** — shows users which features were flagged, why, and how they were masked.
 
 ---
 
@@ -64,7 +73,7 @@ graph TD
 ## Tech Stack
 
 ### **Frameworks & Libraries**
-- **React (Lynx)** — UI development
+- **React (Lynx)** — UI/UX development
 - **TypeScript** — Strong typing for safer, cleaner code
 - **CSS Modules** — Encapsulated styling for components
 - **Generative AI APIs** — Model inference and location-based sensitivity scoring
@@ -157,6 +166,6 @@ npm start
 
 ## 📜 License
 This project is released under the **MIT License**.  
-See [LICENSE](./LICENSE) for details.
+See the full license text [here](https://opensource.org/licenses/MIT).
 
 ---
