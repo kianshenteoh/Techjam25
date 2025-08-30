@@ -42,8 +42,8 @@ From hidden location cues in photos to unauthorized data leaks, users face chall
   - 🟡 **Medium Risk**
   - 🔴 **High Risk**
 
-  ![DetectFlag](./Thunderbolt/assets/DetectFlag.png)
-![DetectCarPlate](./Thunderbolt/assets/DetectCarPlate.png)
+  ![DetectFlag](./Thunderbolt/pictures/DetectFlag.png)
+![DetectCarPlate](./Thunderbolt/pictures/DetectCarPlate.png)
 
 
 ### Automated Privacy Protection
