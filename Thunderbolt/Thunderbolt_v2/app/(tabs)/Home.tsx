@@ -1,9 +1,18 @@
-// screens/HomeGpt.tsx
+// app/(tabs)/Home.tsx
 import React, { useState } from 'react';
-import { SafeAreaView, View, Text, StyleSheet, Image, TouchableOpacity, Dimensions } from 'react-native';
+import {
+  SafeAreaView,
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useNavigation } from '@react-navigation/native';
+import { useRouter } from 'expo-router';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Gauge from '../../components/Gauge';
 
 type FeatureCount = { label: string; value: number };
@@ -28,13 +37,16 @@ const COLORS = {
 const { width } = Dimensions.get('window');
 const MAX_CARD_WIDTH = Math.min(480, width);
 
+const NAV_HEIGHT = 92; // purple bar height
+
 export default function Home({ initialResults }: Props) {
   const [imgUri, setImgUri] = useState<string | null>(null);
   const [results, setResults] = useState<Results | undefined>(initialResults);
-  const navigation = useNavigation<any>();
+  const router = useRouter();
+  const insets = useSafeAreaInsets();
 
   const percent = results?.dangerPercent ?? -1;
-  const bars = results?.features ?? [];  // empty shows dashed placeholder in web; here we just hide bars
+  const bars = results?.features ?? [];
 
   const handlePick = async () => {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -57,7 +69,13 @@ export default function Home({ initialResults }: Props) {
 
   return (
     <SafeAreaView style={styles.screen}>
-      <View style={styles.appPad}>
+      {/* CONTENT */}
+      <View
+        style={[
+          styles.appPad,
+          { paddingBottom: NAV_HEIGHT + insets.bottom }, // leave room for the bar
+        ]}
+      >
         {/* Welcome + subtitle */}
         <Text style={styles.welcome}>Welcome to Thunderbolt</Text>
         <Text style={styles.subtitle}>Detection risk with Thunderbolt AI</Text>
@@ -98,9 +116,8 @@ export default function Home({ initialResults }: Props) {
           {bars.length > 0 ? (
             <View style={styles.bars}>
               {bars.slice(0, 6).map((b, i) => {
-                // map 0..8 -> height 0..100
                 const hPct = Math.min(8, Math.max(0, b.value)) / 8;
-                const barHeight = 100 * hPct; // px
+                const barHeight = 100 * hPct;
                 return (
                   <View style={styles.barCol} key={`${b.label}-${i}`}>
                     <View style={[styles.bar, { height: Math.max(6, barHeight) }]} />
@@ -114,43 +131,37 @@ export default function Home({ initialResults }: Props) {
             <View style={styles.barsPlaceholder} />
           )}
         </View>
+      </View>
 
-        {/* bottom nav */}
-        <View style={styles.nav}>
-          <LinearGradient
-            colors={[
-              'rgba(164,76,219,0.98)',
-              'rgba(131,56,205,0.92)',
-              'rgba(92,0,153,0.86)',
-              'rgba(26,0,42,0.95)',
-              'rgba(0,0,0,1.0)',
-            ]}
-            start={{ x: 0.5, y: 0 }}
-            end={{ x: 0.5, y: 1 }}
-            style={styles.navGrad}
-          />
-          <View style={styles.navInner}>
-            <TouchableOpacity
-              style={styles.navItem}
-              onPress={() => navigation.navigate('HomeGpt')}
-              activeOpacity={0.8}
-            >
-              <Image
-                source={require('../../assets/icon-home.png')}
-                style={styles.navIcon}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.navItem}
-              onPress={() => navigation.navigate('ThunderboltGpt')}
-              activeOpacity={0.8}
-            >
-              <Image
-                source={require('../../assets/icon-bolt.png')}
-                style={styles.navIcon}
-              />
-            </TouchableOpacity>
-          </View>
+      {/* PURPLE NAV pinned to the true bottom */}
+      <View style={[styles.nav, { paddingBottom: insets.bottom }]} pointerEvents="box-none">
+        <LinearGradient
+          colors={[
+            'rgba(164,76,219,0.98)',
+            'rgba(131,56,205,0.92)',
+            'rgba(92,0,153,0.86)',
+            'rgba(26,0,42,0.95)',
+            'rgba(0,0,0,1.0)',
+          ]}
+          start={{ x: 0.5, y: 0 }}
+          end={{ x: 0.5, y: 1 }}
+          style={styles.navGrad}
+        />
+        <View style={styles.navInner}>
+          <TouchableOpacity
+            style={styles.navItem}
+            onPress={() => router.replace('/(tabs)/Home')}
+            activeOpacity={0.8}
+          >
+            <Image source={require('../../assets/icon-home.png')} style={styles.navIcon} />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.navItem}
+            onPress={() => router.replace('/(tabs)/Thunderbolt')}
+            activeOpacity={0.8}
+          >
+            <Image source={require('../../assets/icon-bolt.png')} style={styles.navIcon} />
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>
@@ -164,9 +175,8 @@ const styles = StyleSheet.create({
   },
   appPad: {
     flex: 1,
-    paddingTop: 64,
+    paddingTop: 10,
     paddingHorizontal: 20,
-    paddingBottom: 112, // space for bottom nav
     maxWidth: MAX_CARD_WIDTH,
     width: '100%',
     alignSelf: 'center',
@@ -294,13 +304,13 @@ const styles = StyleSheet.create({
     color: COLORS.muted,
   },
 
-  // nav
+  // custom purple nav (pinned to true bottom)
   nav: {
     position: 'absolute',
     left: 0,
     right: 0,
     bottom: 0,
-    height: 92,
+    height: NAV_HEIGHT,
   },
   navGrad: {
     ...StyleSheet.absoluteFillObject,
@@ -324,5 +334,7 @@ const styles = StyleSheet.create({
     width: 36,
     height: 36,
     resizeMode: 'contain',
+    tintColor: '#fff',
+    opacity: 0.85,
   },
 });
