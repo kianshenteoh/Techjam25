@@ -27,7 +27,8 @@
   align-items:center;
   justify-content:space-between;
   gap:12px;
-  padding-bottom: 30px;
+  padding-bottom: 8px;
+  margin-top: 8px;
 }
 .Title{
   font-size:22px;
@@ -104,7 +105,7 @@
   left: 50%;
   transform: translateX(-50%);
 }
-.ActionBolt:active{ opacity:0.9; }
+.ActionBolt:active{ opacity:0.8; }
 .ActionBoltIcon{
   width:34px;
   height:34px;
@@ -142,3 +143,4 @@
 .NavItem{ width:64px; height:64px; display:grid; align-items:center; justify-items:center; }
 /* use same simple highlight as HomeGpt to avoid unsupported filters */
 .NavIcon{ width:36px; height:36px; }
+.NavIcon:active { opacity: 0.8; }

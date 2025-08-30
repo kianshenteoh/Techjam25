@@ -1,5 +1,6 @@
 import { useState } from '@lynx-js/react';
 import { getMiniApi, pickImageOnce } from './platform.ts';
+import { useNavigate } from 'react-router';
 
 import homeIcon from './assets/icon-home.png';
 import boltIcon from './assets/icon-bolt.png';
@@ -15,6 +16,7 @@ type Results = {
 export function HomeGpt({ initialResults }: { initialResults?: Results }) {
   const [imgSrc, setImgSrc] = useState<string | null>(null);
   const [results, setResults] = useState<Results | undefined>(initialResults);
+  const nav = useNavigate();
 
   const handlePick = async () => {
     const api = getMiniApi();
@@ -102,10 +104,10 @@ export function HomeGpt({ initialResults }: { initialResults?: Results }) {
           <view className="NavGrad" />
           <view className="NavInner">
             <view className="NavItem">
-              <image className="NavIcon" src={homeIcon} />
+              <image className="NavIcon" src={homeIcon} bindtap={() => nav('/HomeGpt')}/>
             </view>
             <view> {/*className="NavItem NavItem--active"*/}
-              <image className="NavIcon" src={boltIcon} />
+              <image className="NavIcon" src={boltIcon} bindtap={() => nav('/ThunderboltGpt')}/>
             </view>
           </view>
         </view>

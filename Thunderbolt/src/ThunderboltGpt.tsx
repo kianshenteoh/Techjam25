@@ -1,5 +1,7 @@
 import { useState } from '@lynx-js/react';
 import { getMiniApi, pickImageOnce } from './platform.ts';
+import { useNavigate } from 'react-router';
+import { setImagePath, getImagePath } from './imageStore.ts';
 
 import homeIcon from './assets/icon-home.png';
 import boltIcon from './assets/icon-bolt.png';
@@ -8,13 +10,16 @@ import './ThunderboltGpt.css';
 
 export function ThunderboltGpt() {
   const [imgSrc, setImgSrc] = useState<string | null>(null);
+  const nav = useNavigate();
 
   const handlePick = async () => {
     const api = getMiniApi();
+    console.log('mini api =', api, 'chooseImage:', typeof api?.chooseImage, 'chooseMedia:', typeof api?.chooseMedia);
+
     if (!api) { console.warn('No mini-app API found'); return; }
     try {
       const src = await pickImageOnce(api);
-      if (src) setImgSrc(src);
+      if (src) { setImgSrc(src); setImagePath(src); };
     } catch (e) {
       console.error('pick image failed', e);
     }
@@ -31,7 +36,7 @@ export function ThunderboltGpt() {
 
         {/* Title banner */}
         <view className="TitleRow">
-          <text className="Title">Detect risk with Thunderbolt AI</text>
+          <text className="Title">Detect with Thunderbolt AI</text>
           <image className="TitleBolt" src={boltIcon} />
         </view>
 
@@ -59,10 +64,10 @@ export function ThunderboltGpt() {
           <view className="NavGrad" />
           <view className="NavInner">
             <view className="NavItem">
-              <image className="NavIcon" src={homeIcon} />
+              <image className="NavIcon" src={homeIcon} bindtap={() => nav('/HomeGpt')}/>
             </view>
             <view className="NavItem NavItem--active">
-              <image className="NavIcon" src={boltIcon} />
+              <image className="NavIcon" src={boltIcon} bindtap={() => nav('/ThunderboltGpt')}/>
             </view>
           </view>
         </view>
