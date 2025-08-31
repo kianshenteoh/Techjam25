@@ -69,7 +69,7 @@ graph TD
   F --> H[Masked Image Output]
 ```
 
-- **Frontend:** React (Lynx mini-app framework)
+- **Frontend:** React (expo mini-app framework)
 - **AI Engine:** Integrates **generative AI** models for detection and inference
 - **Privacy Layer:** Image processing techniques to blur/mask sensitive regions
 
@@ -78,14 +78,14 @@ graph TD
 ## Tech Stack
 
 ### **Frameworks & Libraries**
-- **React (Lynx)** — UI/UX development
+- **React-native (Expo)** — UI/UX development
 - **TypeScript** — Strong typing for safer, cleaner code
 - **CSS Modules** — Encapsulated styling for components
 - **Generative AI APIs** — Model inference and location-based sensitivity scoring
 
 ### **Development Tools**
 - **Visual Studio Code (VSCode)** — for project development, debugging, and code management.
-- **Lynx Mini-App Framework** — frontend framework for seamless mobile-native UI development.
+- **Expo Mini-App Framework** — frontend framework for seamless mobile-native UI development.
 - **Node.js & npm** — used for dependency management and running the development server.
 - **Git & GitHub** — version control and collaborative development.
 - **Jupyter / Colab** — quick experimentation for AI detection models.
@@ -97,7 +97,7 @@ graph TD
 | `Thunderbolt.tsx`  | Main dashboard & detection logic                      |
 | `HomeGpt.tsx`      | Welcome page with result visualization               |
 | `Query.tsx`        | Handles uploads, previews, circular gauges, bar charts |
-| `App.tsx`          | Entry point for Lynx mini-app                         |
+| `App.tsx`          | Entry point for Expo mini-app                         |
 | `Router.tsx`       | Manages page routing within the app                  |
 
 ---

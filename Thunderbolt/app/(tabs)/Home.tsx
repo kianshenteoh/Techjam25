@@ -81,7 +81,7 @@ export default function Home({ initialResults }: Props) {
         <Text style={styles.subtitle}>Detection risk with Thunderbolt AI</Text>
 
         {/* New image button */}
-        <TouchableOpacity onPress={handlePick} activeOpacity={0.8} style={styles.primaryBtn}>
+        <TouchableOpacity onPress={() => router.replace('/(tabs)/Thunderbolt')} activeOpacity={0.8} style={styles.primaryBtn}>
           <Text style={styles.primaryBtnText}>New image</Text>
         </TouchableOpacity>
 
